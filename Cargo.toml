@@ -19,6 +19,7 @@ maintenance = { status = "actively-developed" }
 default = ["reqwest", "rustls-tls"]
 curl = ["oauth2/curl"]
 reqwest = ["oauth2/reqwest"]
+reqwest-blocking = ["oauth2/reqwest", "oauth2/reqwest-blocking"]
 ureq = ["oauth2/ureq"]
 native-tls = ["oauth2/native-tls"]
 rustls-tls = ["oauth2/rustls-tls"]
@@ -38,7 +39,7 @@ chrono = { version = "0.4", default-features = false, features = [
     "wasmbind"
 ] }
 thiserror = "1.0"
-http = "0.2"
+http = "1"
 itertools = "0.10"
 log = "0.4"
 oauth2 = { version = "4.4.1", default-features = false }
@@ -70,3 +71,8 @@ reqwest_ = { package = "reqwest", features = [
 ], version = "0.11", default-features = false }
 retry = "1.0"
 anyhow = "1.0"
+
+[patch.crates-io]
+hyper-util = { git = "https://github.com/grafbase/hyper-util", rev = "c7acf8968d96a4408e952a097d93602d2e8ed01a" } # error-is-connect
+oauth2 = { git = "https://github.com/grafbase/oauth2-rs", rev = "18b1f9a8b2fae61b50c0c6f2d44672ec176f4612" } # http-v1
+reqwest = { git = "https://github.com/grafbase/reqwest", rev = "c786d48a4aaf37dce07118e067b66ecb02f9390a" } # hyper-v1-and-wasm-from-parts-build-split
